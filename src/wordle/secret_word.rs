@@ -3,6 +3,7 @@ use std::collections::HashSet;
 use counter::Counter;
 use rand::seq::SliceRandom;
 
+#[derive(Debug, PartialEq, Eq)]
 pub enum TextColor {
     Green,
     Yellow,
@@ -81,3 +82,19 @@ impl SecretWord {
     }
 }
 
+#[cfg(test)]
+mod tests {
+    use super::TextColor;
+    #[test]
+    fn text_color_eq() {
+        let a = TextColor::Green;
+        let b = TextColor::Green;
+        assert_eq!(a, b);
+    }
+    #[test]
+    fn text_color_neq() {
+        let a = TextColor::Green;
+        let b = TextColor::Black;
+        assert!(a != b);
+    }
+}
